@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAIL? - E-Cell</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #222;
+      color: #fff;
+    }
+    .navbar {
+      background: #333;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 56px;
+    }
+    .navbar img {
+      height: 36px;
+    }
+    .navbar-links {
+      display: flex;
+      gap: 32px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .navbar-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .navbar-links a:hover {
+      color: #ffb300;
+    }
+    .banner {
+      background: #111;
+      text-align: center;
+      padding: 0;
+      position: relative;
+    }
+    .banner img {
+      width: 100%;
+      max-width: 700px;
+      margin: 32px auto 0 auto;
+      display: block;
+    }
+    .banner button {
+      background: #ff6f61;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 24px 0 32px 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .banner button:hover {
+      background: #ff3b2e;
+    }
+    .section {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 32px;
+      padding: 32px 0;
+      background: #222;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section img {
+      width: 340px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .section-content {
+      max-width: 420px;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .section-desc {
+      font-size: 15px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #444;
+      margin: 32px 0 0 0;
+    }
+    .why-sponsor {
+      background: #292929;
+      padding: 32px 0 16px 0;
+      text-align: center;
+    }
+    .why-sponsor-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .why-sponsor-list {
+      display: inline-block;
+      text-align: left;
+      color: #ccc;
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .speakers-section {
+      background: #222;
+      padding: 32px 0 0 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .speakers-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #fff;
+      text-align: center;
+    }
+    .speakers-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .speaker-card {
+      background: #292929;
+      border-radius: 10px;
+      width: 260px;
+      padding: 0 0 16px 0;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .speaker-card img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      height: 180px;
+      object-fit: cover;
+    }
+    .speaker-name {
+      font-weight: 600;
+      margin-top: 8px;
+      font-size: 15px;
+    }
+    .speaker-role {
+      font-size: 13px;
+      color: #ffb300;
+      margin-bottom: 8px;
+    }
+    .previous-sponsors {
+      background: #292929;
+      padding: 32px 0 16px 0;
+      text-align: center;
+    }
+    .previous-sponsors-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .sponsor-logos {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 16px;
+    }
+    .sponsor-logos img {
+      height: 48px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 8px 16px;
+      object-fit: contain;
+    }
+    .ecell-website-btn {
+      background: #444;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 32px;
+      font-size: 15px;
+      font-weight: 600;
+      margin: 16px 0 0 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .ecell-website-btn:hover {
+      background: #ffb300;
+      color: #222;
+    }
+    .group-photo-section {
+      background: #222;
+      padding: 32px 0 0 0;
+      text-align: center;
+    }
+    .group-photo-section img {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 12px;
+      margin-bottom: 0;
+    }
+    .footer {
+      background: #292929;
+      color: #ccc;
+      padding: 32px 0 16px 0;
+      text-align: center;
+      font-size: 15px;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .footer-section {
+      min-width: 220px;
+      text-align: left;
+    }
+    .footer-section h4 {
+      color: #ffb300;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .footer-section a {
+      color: #7ecfff;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+    .footer-section a:hover {
+      text-decoration: underline;
+    }
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .footer-social img {
+      width: 24px;
+      height: 24px;
+      filter: invert(1);
+    }
+    @media (max-width: 900px) {
+      .section, .speakers-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 8px;
+      }
+      .section img {
+        width: 100%;
+        max-width: 340px;
+      }
+      .speakers-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .sponsor-logos {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .group-photo-section img {
+        max-width: 100%;
+      }
+      .footer-content {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <img src="images/navbar/logo.png" alt="E-Cell Logo">
+    <div class="navbar-links">
+      <a href="#">FAIL?</a>
+      <a href="#">Sponsors</a>
+      <a href="#">Team</a>
+    </div>
+  </div>
+
+  <!-- Banner -->
+  <div class="banner">
+    <img src="images/banner/fail_banner.png" alt="FAIL? Banner">
+    <button>FAIL? Register</button>
+  </div>
+
+  <!-- Event Description Section -->
+  <div class="section">
+    <img src="images/goal/goal1.jpg" alt="Speaker on Stage">
+    <div class="section-content">
+      <div class="section-title">What is FAIL?</div>
+      <div class="section-desc">
+        FAIL? where incredible keynote speakers from diverse backgrounds will share their inspiring stories of setbacks, challenges, and how they transformed failure into a stepping-stone towards their ultimate success.
+      </div>
+      <div class="section-title" style="margin-top:32px;">Goal of FAIL?</div>
+      <div class="section-desc">
+        FAIL? is aimed at facing the moments of failure head-on, sharing them and most importantly improving by them. It is a celebration of moments we don't generally share.
+      </div>
+    </div>
+    <img src="images/goal/goal2.jpg" alt="Audience">
+  </div>
+
+  <hr class="divider">
+
+  <!-- Why Sponsor Us -->
+  <div class="why-sponsor">
+    <div class="why-sponsor-title">Why Sponsor Us?</div>
+    <div class="why-sponsor-list">
+      <ul>
+        <li><b>Connect with college students:</b> IIIT H has more than 2100 tech-savvy students on campus, with many more talented professionals and students from other colleges attending our events, making this sponsorship a good opportunity to connect with a diverse audience.</li>
+        <li><b>Perfect marketing opportunity:</b> E-Cell attracts some of the largest crowds for any event in IIIT. This is your chance to put your newest products and ideas in front of an ideal target audience.</li>
+        <li><b>Boost Your Brand Awareness:</b> Sponsorship puts your company at the forefront of the event, generating significant brand exposure and recognition among attendees and the tech community.</li>
+        <li><b>Support Future Leaders & Give Back:</b> By sponsoring our event, you're directly contributing to fostering the next generation of entrepreneurs. It's a fantastic way to fulfill your <b>CSR goals</b> and make a positive impact.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Speakers Section -->
+  <div class="speakers-section">
+    <div class="speakers-title">FAIL? 2023 Speakers</div>
+    <div class="speakers-grid">
+      <div class="speaker-card">
+        <img src="images/speakers/speaker1.jpg" alt="Dr. Karthik Vaidyanathan">
+        <div class="speaker-name">Dr. Karthik Vaidyanathan</div>
+      </div>
+      <div class="speaker-card">
+        <img src="images/speakers/speaker2.jpg" alt="Lt. Cdr. Vartika Joshi">
+        <div class="speaker-name">Lt. Cdr. Vartika Joshi</div>
+      </div>
+      <div class="speaker-card">
+        <img src="images/speakers/speaker3.jpg" alt="Mr. Ashris Choudhury">
+        <div class="speaker-name">Mr. Ashris Choudhury</div>
+      </div>
+      <div class="speaker-card">
+        <img src="images/speakers/speaker4.jpg" alt="Ms. Janvi Tiwari">
+        <div class="speaker-name">Ms. Janvi Tiwari</div>
+      </div>
+      <div class="speaker-card">
+        <img src="images/speakers/speaker5.jpg" alt="Ms. Puja Marwaha">
+        <div class="speaker-name">Ms. Puja Marwaha</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Previous Sponsors -->
+  <div class="previous-sponsors">
+    <div class="previous-sponsors-title">Previous E-Cell Sponsors</div>
+    <div class="sponsor-logos">
+      <img src="images/sponsors/ea.png" alt="EA">
+      <img src="images/sponsors/qualcomm.png" alt="Qualcomm">
+      <img src="images/sponsors/uber.png" alt="Uber">
+      <img src="images/sponsors/amazon.png" alt="Amazon">
+    </div>
+    <button class="ecell-website-btn">E-Cell Website</button>
+  </div>
+
+  <!-- Group Photo -->
+  <div class="group-photo-section">
+    <img src="images/group/group_photo.jpg" alt="E-Cell Group Photo">
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <a href="tel:+919970113332">+91 99701 13332</a>
+        <a href="mailto:nikhil.ashok@research.iiit.ac.in">nikhil.ashok@research.iiit.ac.in</a>
+        <a href="tel:+919029570140">+91 90295 70140</a>
+        <a href="mailto:samik.mukherjee@students.iiit.ac.in">samik.mukherjee@students.iiit.ac.in</a>
+        <a href="tel:+919391116946">+91 93911 16946</a>
+        <a href="mailto:maitreya.chitale@students.iiit.ac.in">maitreya.chitale@students.iiit.ac.in</a>
+        <a href="tel:+919949484546">+91 99494 84546</a>
+        <a href="mailto:shubhi.kathuria@students.iiit.ac.in">shubhi.kathuria@students.iiit.ac.in</a>
+      </div>
+      <div class="footer-section">
+        <h4>Social networks</h4>
+        <div class="footer-social">
+          <a href="#"><img src="images/navbar/twitter.png" alt="Twitter"></a>
+          <a href="#"><img src="images/navbar/youtube.png" alt="YouTube"></a>
+          <a href="#"><img src="images/navbar/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="images/navbar/instagram.png" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
